@@ -5,8 +5,9 @@ import connectDB from './config/database';
 import projectRoutes from './routes/project.routes';
 import serviceRoutes from './routes/service.routes';
 import technologyRoutes from './routes/technology.routes';
-// import translationRoutes from './routes/translation.routes';
-// import contactRoutes from './routes/contact.routes';
+import translationRoutes from './routes/translation.routes';
+import contactRoutes from './routes/contact.routes';
+import cvRoutes from './routes/cv.routes';
 
 import { seedProjects } from './controllers/project.controller';
 import { seedServices } from './controllers/service.controller';
@@ -29,8 +30,9 @@ app.use(express.json());
 app.use('/api/projects', projectRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/technologies', technologyRoutes);
-// app.use('/api/translations', translationRoutes);
-// app.use('/api/contact', contactRoutes);
+app.use('/api/translations', translationRoutes);
+app.use('/api/contact', contactRoutes);
+app.use('/api/cv', cvRoutes);
 
 const PORT: string | number = process.env.PORT || 4000;
 

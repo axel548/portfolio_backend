@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import translations from "../data/translations.json";
 
-interface Translation {
-  title: string;
-  subtitle: string;
-}
+import { Translation } from '../types';
 
 interface Translations {
   [key: string]: Translation;
