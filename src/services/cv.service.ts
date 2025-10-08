@@ -50,7 +50,7 @@ export const generateCv = async (lang: string) => {
 
     // const pdf = await page.pdf({ format: 'A4', printBackground: true });
     const pdf = await page.pdf({
-      format: "A4",
+      format: "Letter",
       printBackground: true,
       margin: { top: "10mm", bottom: "10mm", left: "10mm", right: "10mm" }
     });
