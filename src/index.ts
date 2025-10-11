@@ -15,30 +15,9 @@ import workRoutes from './routes/work.routes';
 import aboutRoutes from './routes/about.routes';
 import experienceEducationRoutes from './routes/experience_education.routes';
 
-import { seedProjects } from './controllers/project.controller';
-import { seedWorks } from './controllers/work.controller';
-import { seedServices } from './controllers/service.controller';
-import { seedTechnologies } from './controllers/technology.controller';
-import { seedLanguages } from './controllers/language.controller';
-import { seedGeneral } from './controllers/general.controller';
-import { seedLetsTalk } from './controllers/lets-talk.controller';
-import { seedPersonalInfo } from './seeders/personal-info.seeder';
-import { seedAbout } from './seeders/about.seeder';
-import { seedExperienceEducation } from './seeders/experience_education.seeder';
-
 // Connect to Database
 const startServer = async () => {
     await connectDB();
-    await seedProjects();
-    await seedServices();
-    await seedTechnologies();
-    await seedLanguages();
-    await seedGeneral();
-    await seedLetsTalk();
-    await seedPersonalInfo();
-    await seedWorks();
-    await seedAbout();
-    await seedExperienceEducation();
 };
 
 startServer();
