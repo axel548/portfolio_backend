@@ -10,6 +10,7 @@ import cvRoutes from './routes/cv.routes';
 import languageRoutes from './routes/language.routes';
 import generalRoutes from './routes/general.routes';
 import letsTalkRoutes from './routes/lets-talk.routes';
+import personalInfoRoutes from './routes/personal-info.routes';
 
 import { seedProjects } from './controllers/project.controller';
 import { seedServices } from './controllers/service.controller';
@@ -17,6 +18,7 @@ import { seedTechnologies } from './controllers/technology.controller';
 import { seedLanguages } from './controllers/language.controller';
 import { seedGeneral } from './controllers/general.controller';
 import { seedLetsTalk } from './controllers/lets-talk.controller';
+import { seedPersonalInfo } from './seeders/personal-info.seeder';
 
 // Connect to Database
 connectDB().then(() => {
@@ -26,6 +28,7 @@ connectDB().then(() => {
     seedLanguages();
     seedGeneral();
     seedLetsTalk();
+    seedPersonalInfo();
 });
 
 const app: Express = express();
@@ -43,6 +46,7 @@ app.use('/api/cv', cvRoutes);
 app.use('/api/languages', languageRoutes);
 app.use('/api/general', generalRoutes);
 app.use('/api/lets-talk', letsTalkRoutes);
+app.use('/api/personal-info', personalInfoRoutes);
 
 
 const PORT: string | number = process.env.PORT || 4000;
