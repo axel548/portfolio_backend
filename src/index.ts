@@ -12,6 +12,7 @@ import generalRoutes from './routes/general.routes';
 import letsTalkRoutes from './routes/lets-talk.routes';
 import personalInfoRoutes from './routes/personal-info.routes';
 import workRoutes from './routes/work.routes';
+import aboutRoutes from './routes/about.routes';
 
 import { seedProjects } from './controllers/project.controller';
 import { seedWorks } from './controllers/work.controller';
@@ -21,18 +22,23 @@ import { seedLanguages } from './controllers/language.controller';
 import { seedGeneral } from './controllers/general.controller';
 import { seedLetsTalk } from './controllers/lets-talk.controller';
 import { seedPersonalInfo } from './seeders/personal-info.seeder';
+import { seedAbout } from './seeders/about.seeder';
 
 // Connect to Database
-connectDB().then(() => {
-    seedProjects();
-    seedServices();
-    seedTechnologies();
-    seedLanguages();
-    seedGeneral();
-    seedLetsTalk();
-    seedPersonalInfo();
-    seedWorks();
-});
+const startServer = async () => {
+    await connectDB();
+    await seedProjects();
+    await seedServices();
+    await seedTechnologies();
+    await seedLanguages();
+    await seedGeneral();
+    await seedLetsTalk();
+    await seedPersonalInfo();
+    await seedWorks();
+    await seedAbout();
+};
+
+startServer();
 
 const app: Express = express();
 
@@ -51,6 +57,7 @@ app.use('/api/general', generalRoutes);
 app.use('/api/lets-talk', letsTalkRoutes);
 app.use('/api/personal-info', personalInfoRoutes);
 app.use('/api/works', workRoutes);
+app.use('/api/about', aboutRoutes);
 
 
 const PORT: string | number = process.env.PORT || 4000;
