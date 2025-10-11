@@ -4,20 +4,13 @@ import { getCvTemplate } from '../templates/cv.template';
 import Project, { IProject } from '../models/project.model';
 import Service, { IService } from '../models/service.model';
 import Technology, { ITechnology } from '../models/technology.model';
-import translations from '../data/translations.json';
+import Translation, { ILanguage } from '../models/language.model';
 import fs from "fs";
 
-import { Translation } from '../types';
-
-
-interface Translations {
-  [key: string]: Translation;
-}
 
 export const generateCv = async (lang: string) => {
   try {
-    const typedTranslations = translations as Translations;
-    const translation = typedTranslations[lang];
+    const translation = await Translation.findOne({ code: lang }) as ILanguage;
 
     if (!translation) {
       throw new Error('Language not found');
