@@ -2,15 +2,9 @@
 import { Request, Response } from 'express';
 import { generateCv } from '../services/cv.service';
 
-interface CvRequest extends Request {
-  params: {
-    lang: string;
-  };
-}
-
-export const getCv = async (req: CvRequest, res: Response) => {
+export const getCv = async (req: Request, res: Response) => {
   try {
-    const { lang } = req.params;
+    const lang = req.query.lang as string || 'es';
     const pdf = await generateCv(lang);
 
     // res.setHeader('Content-Type', 'application/pdf');

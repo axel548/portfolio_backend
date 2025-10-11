@@ -4,6 +4,6 @@ import { getCv } from '../controllers/cv.controller';
 
 const router = Router();
 
-router.get('/:lang', getCv);
+router.get('/', getCv);
 
 export default router;
