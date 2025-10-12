@@ -1,15 +1,29 @@
 import { Schema, model, Document } from 'mongoose';
 
-export interface IService extends Document {
+export interface IServiceItem {
     title: string;
     description: string;
-    image?: string;
+    icon: string;
 }
 
-const ServiceSchema = new Schema({
-  title: { type: String, required: true },
-  description: { type: String, required: true },
-  image: { type: String },
+export interface IService extends Document {
+    lang: string;
+    title:string;
+    description:string;
+    services: IServiceItem[];
+}
+
+const ServiceItemSchema = new Schema<IServiceItem>({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    icon: { type: String, required: true },
+});
+
+const ServiceSchema = new Schema<IService>({
+    lang: { type: String, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    services: [ServiceItemSchema],
 });
 
 export default model<IService>('Service', ServiceSchema);
