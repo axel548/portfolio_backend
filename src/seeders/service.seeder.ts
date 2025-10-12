@@ -3,7 +3,6 @@ import Service, { IService } from '../models/service.model';
 
 export const seedServices = async () => {
     try {
-        await Service.deleteMany({});
         const count = await Service.countDocuments();
         console.log('Services seeded: ', count);
         if (count === 0) {
