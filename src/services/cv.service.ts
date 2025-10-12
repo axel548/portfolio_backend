@@ -23,9 +23,9 @@ export const generateCv = async (lang: string) => {
     console.log('Data fetched successfully: ', { projects, services, technologies });
 
     const html = getCvTemplate(translation, projects, services, technologies);
-    fs.writeFileSync("debug.html", html);
-    console.log("HTML dumped to debug.html");
-    console.log('HTML generated: ', { html });
+    // fs.writeFileSync("debug.html", html);
+    // console.log("HTML dumped to debug.html");
+    // console.log('HTML generated: ', { html });
 
 
     console.log('Launching puppeteer...');
