@@ -1,5 +1,21 @@
 import { Schema, model } from 'mongoose';
 
+export interface IPricing {
+  lang: string;
+  title: string;
+  description: string;
+  plans: {
+    type: string;
+    price: string;
+    description: string;
+    features: {
+      feature: string;
+      available: boolean;
+    }[];
+    button: string;
+  }[];
+}
+
 const pricingSchema = new Schema({
   lang: {
     type: String,
@@ -47,4 +63,4 @@ const pricingSchema = new Schema({
   ],
 });
 
-export default model('Pricing', pricingSchema);
+export default model<IPricing>('Pricing', pricingSchema);
