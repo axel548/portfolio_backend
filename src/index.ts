@@ -6,7 +6,7 @@ import projectRoutes from './routes/project.routes';
 import serviceRoutes from './routes/service.routes';
 import technologyRoutes from './routes/technology.routes';
 import contactRoutes from './routes/contact.routes';
-import cvRoutes from './routes/cv.routes';
+// import cvRoutes from './routes/cv.routes';
 import languageRoutes from './routes/language.routes';
 import generalRoutes from './routes/general.routes';
 import letsTalkRoutes from './routes/lets-talk.routes';
@@ -16,6 +16,7 @@ import aboutRoutes from './routes/about.routes';
 import experienceEducationRoutes from './routes/experience_education.routes';
 import testimonialRoutes from './routes/testimonial.routes';
 import pricingRoutes from './routes/pricing.routes';
+import skillRoutes from './routes/skill.routes';
 
 // Connect to Database
 const startServer = async () => {
@@ -35,7 +36,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/technologies', technologyRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/api/cv', cvRoutes);
+// app.use('/api/cv', cvRoutes);
 app.use('/api/languages', languageRoutes);
 app.use('/api/general', generalRoutes);
 app.use('/api/lets-talk', letsTalkRoutes);
@@ -45,6 +46,7 @@ app.use('/api/about', aboutRoutes);
 app.use('/api/experience-education', experienceEducationRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/pricing', pricingRoutes);
+app.use('/api/skils', skillRoutes);
 
 
 const PORT: string | number = process.env.PORT || 4000;
