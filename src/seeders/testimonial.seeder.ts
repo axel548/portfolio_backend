@@ -1,56 +1,62 @@
-import Testimonial from '../models/testimonial.model';
+import Testimonial, { ITestimonial } from '../models/testimonial.model';
 
-const testimonialData = {
-  es: {
+const testimonialData: ITestimonial[] = [
+  {
     lang: 'es',
-    title: 'Testimonios',
-    description: 'Lo que dicen mis colegas y clientes sobre mi trabajo.',
+    title: 'Testimonios Ficticios',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     testimonials: [
       {
-        name: 'Carlos Gómez',
-        role: 'CTO',
-        company: 'TechCorp',
-        image: '/images/testimonial1.png',
-        description: 'Axel es un profesional excepcional con gran dominio de las tecnologías DevOps.',
+        name: 'Juan Pérez',
+        role: 'Gerente de Proyecto',
+        company: 'Empresa Ficticia',
+        image: '/images/fake-testimonial1.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       },
       {
-        name: 'María Pérez',
-        role: 'Project Manager',
-        company: 'INNAPP',
-        image: '/images/testimonial2.png',
-        description: 'Su capacidad para automatizar procesos nos ahorró semanas de trabajo.',
+        name: 'María García',
+        role: 'Diseñadora UX',
+        company: 'Otra Empresa Ficticia',
+        image: '/images/fake-testimonial2.png',
+        description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       },
     ],
-  },
-  en: {
+  } as ITestimonial,
+  {
     lang: 'en',
-    title: 'Testimonials',
-    description: 'What my colleagues and clients say about my work.',
+    title: 'Fictional Testimonials',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     testimonials: [
       {
-        name: 'Carlos Gomez',
-        role: 'CTO',
-        company: 'TechCorp',
-        image: '/images/testimonial1.png',
-        description: 'Axel is an exceptional professional with great command of DevOps technologies.',
+        name: 'John Doe',
+        role: 'Project Manager',
+        company: 'Fictional Company',
+        image: '/images/fake-testimonial1.png',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       },
       {
-        name: 'Maria Perez',
-        role: 'Project Manager',
-        company: 'INNAPP',
-        image: '/images/testimonial2.png',
-        description: 'His ability to automate processes saved us weeks of work.',
+        name: 'Jane Smith',
+        role: 'UX Designer',
+        company: 'Another Fictional Company',
+        image: '/images/fake-testimonial2.png',
+        description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       },
     ],
-  },
-};
+  } as ITestimonial,
+];
 
 export const seedTestimonials = async () => {
   try {
     await Testimonial.deleteMany({});
-    await Testimonial.insertMany([testimonialData.es, testimonialData.en]);
-    console.log('Testimonials seeded successfully');
+    const count = await Testimonial.countDocuments({});
+
+    if (count > 0) {
+      console.log('Testimonial data already exists, skipping seeding.');
+      return;
+    }
+    await Testimonial.insertMany(testimonialData);
+    console.log('Testimonial data seeded successfully');
   } catch (error) {
-    console.error('Error seeding testimonials:', error);
+    console.error('Error seeding Testimonial data:', error);
   }
 };

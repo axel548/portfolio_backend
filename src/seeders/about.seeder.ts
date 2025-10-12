@@ -4,21 +4,29 @@ const aboutData: IAbout[] = [
     {
         lang: 'es',
         title: 'Sobre mí',
-        description: 'Soy un apasionado del desarrollo backend, la infraestructura como código y la automatización de procesos DevOps.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         button: 'Contáctame'
     } as IAbout,
     {
         lang: 'en',
         title: 'About me',
-        description: 'I am passionate about backend development, infrastructure as code, and DevOps process automation.',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         button: 'Contact me'
     } as IAbout
 ];
 
 export const seedAbout = async () => {
-    const count = await About.countDocuments();
-    if (count === 0) {
+    try {
+        await About.deleteMany({});
+        const count = await About.countDocuments({});
+
+        if (count > 0) {
+            console.log('About data already exists, skipping seeding.');
+            return;
+        }
         await About.insertMany(aboutData);
-        console.log('About data has been seeded');
+        console.log('About data seeded successfully');
+    } catch (error) {
+        console.error('Error seeding About data:', error); 
     }
 };

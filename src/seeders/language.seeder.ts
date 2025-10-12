@@ -1,19 +1,22 @@
 import Language, { ILanguage } from '../models/language.model';
 
+const languagesData: ILanguage[] = [
+    { name: 'Spanish', code: 'es' } as ILanguage,
+    { name: 'English', code: 'en' } as ILanguage
+];
+
 export const seedLanguages = async () => {
     try {
-        const count = await Language.countDocuments();
-        if (count === 0) {
-            const languages: ILanguage[] = [
-                { name: 'Spanish', code: 'es' } as ILanguage,
-                { name: 'English', code: 'en' } as ILanguage
-            ];
-            await Language.insertMany(languages);
-            console.log('Languages seeded');
+        await Language.deleteMany({});
+        const count = await Language.countDocuments({});
+
+        if (count > 0) {
+            console.log('Language data already exists, skipping seeding.');
+            return;
         }
-    } catch (err) {
-        if (err instanceof Error) {
-            console.error(err.message);
-        }
+        await Language.insertMany(languagesData);
+        console.log('Language data seeded successfully');
+    } catch (error) {
+        console.error('Error seeding Language data:', error);
     }
 };

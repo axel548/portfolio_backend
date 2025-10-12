@@ -1,92 +1,100 @@
-import Pricing from '../models/pricing.model';
+import Pricing, { IPricing } from '../models/pricing.model';
 
-export const seedPricing = async () => {
-  const pricingES = {
+const pricingData: IPricing[] = [
+  {
     lang: 'es',
-    title: 'Planes de Precios',
-    description: 'Elige el plan que mejor se adapte a tus necesidades.',
+    title: 'Planes Ficticios',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     plans: [
       {
         type: 'Básico',
-        price: '$50',
-        description: 'Ideal para pequeñas páginas o ajustes iniciales.',
+        price: '$10',
+        description: 'Lorem ipsum dolor sit amet.',
         features: [
-          { feature: '1 página o sección', available: true },
-          { feature: 'Hosting incluido', available: false },
-          { feature: 'Soporte prioritario', available: false },
+          { feature: 'Característica 1', available: true },
+          { feature: 'Característica 2', available: false },
+          { feature: 'Característica 3', available: false },
         ],
-        button: 'Ordenar ahora',
+        button: 'Comprar',
       },
       {
         type: 'Profesional',
-        price: '$150',
-        description: 'Para proyectos medianos con integración de backend.',
+        price: '$50',
+        description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         features: [
-          { feature: '3 páginas personalizadas', available: true },
-          { feature: 'Hosting incluido', available: true },
-          { feature: 'Soporte prioritario', available: false },
+          { feature: 'Característica 1', available: true },
+          { feature: 'Característica 2', available: true },
+          { feature: 'Característica 3', available: false },
         ],
-        button: 'Ordenar ahora',
+        button: 'Comprar',
       },
       {
         type: 'Premium',
-        price: '$300',
-        description: 'Solución completa con despliegue automatizado.',
+        price: '$100',
+        description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         features: [
-          { feature: 'Full Stack + DevOps', available: true },
-          { feature: 'Hosting y monitoreo', available: true },
-          { feature: 'Soporte prioritario', available: true },
+          { feature: 'Característica 1', available: true },
+          { feature: 'Característica 2', available: true },
+          { feature: 'Característica 3', available: true },
         ],
-        button: 'Ordenar ahora',
+        button: 'Comprar',
       },
     ],
-  };
-
-  const pricingEN = {
+  } as IPricing,
+  {
     lang: 'en',
-    title: 'Pricing Plans',
-    description: 'Choose the plan that best suits your needs.',
+    title: 'Fictional Plans',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     plans: [
       {
         type: 'Basic',
-        price: '$50',
-        description: 'Ideal for small pages or initial adjustments.',
+        price: '$10',
+        description: 'Lorem ipsum dolor sit amet.',
         features: [
-          { feature: '1 page or section', available: true },
-          { feature: 'Hosting included', available: false },
-          { feature: 'Priority support', available: false },
+          { feature: 'Feature 1', available: true },
+          { feature: 'Feature 2', available: false },
+          { feature: 'Feature 3', available: false },
         ],
-        button: 'Order now',
+        button: 'Buy',
       },
       {
         type: 'Professional',
-        price: '$150',
-        description: 'For medium-sized projects with backend integration.',
+        price: '$50',
+        description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
         features: [
-          { feature: '3 custom pages', available: true },
-          { feature: 'Hosting included', available: true },
-          { feature: 'Priority support', available: false },
+          { feature: 'Feature 1', available: true },
+          { feature: 'Feature 2', available: true },
+          { feature: 'Feature 3', available: false },
         ],
-        button: 'Order now',
+        button: 'Buy',
       },
       {
         type: 'Premium',
-        price: '$300',
-        description: 'Complete solution with automated deployment.',
+        price: '$100',
+        description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
         features: [
-          { feature: 'Full Stack + DevOps', available: true },
-          { feature: 'Hosting and monitoring', available: true },
-          { feature: 'Priority support', available: true },
+          { feature: 'Feature 1', available: true },
+          { feature: 'Feature 2', available: true },
+          { feature: 'Feature 3', available: true },
         ],
-        button: 'Order now',
+        button: 'Buy',
       },
     ],
-  };
+  } as IPricing,
+];
 
-  const pricingCount = await Pricing.countDocuments();
-  console.log(`Pricing documents count: ${pricingCount}`);
-  if (pricingCount > 0) return;
-  console.log('Seeding pricing data...');
-  await Pricing.create(pricingES);
-  await Pricing.create(pricingEN);
+export const seedPricing = async () => {
+  try {
+    await Pricing.deleteMany({});
+    const count = await Pricing.countDocuments({});
+
+    if (count > 0) {
+      console.log('Pricing data already exists, skipping seeding.');
+      return;
+    }
+    await Pricing.insertMany(pricingData);
+    console.log('Pricing data seeded successfully');
+  } catch (error) {
+    console.error('Error seeding Pricing data:', error);
+  }
 };

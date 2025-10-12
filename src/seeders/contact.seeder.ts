@@ -1,24 +1,22 @@
-import Contact from '../models/contact.model';
+import Contact, { IContact } from '../models/contact.model';
 
-export const seedContact = async () => {
-  await Contact.deleteMany({});
-
-  const contactES = new Contact({
+const contactData: IContact[] = [
+  {
     lang: 'es',
     title: 'Contacto',
-    description: '¿Tienes un proyecto en mente? ¡Conversemos!',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     info: {
       address: {
         title: 'Ubicación',
-        description: 'Guatemala',
+        description: 'Ciudad Ficticia, País Imaginario',
       },
       phone: {
         title: 'Teléfono',
-        description: '+502 1234 5678',
+        description: '+00 1234 5678',
       },
       email: {
         title: 'Correo electrónico',
-        description: 'contacto@gmail.site',
+        description: 'correo@ficticio.com',
       },
     },
     form: {
@@ -28,24 +26,23 @@ export const seedContact = async () => {
       message: 'Mensaje',
       button: 'Enviar mensaje',
     },
-  });
-
-  const contactEN = new Contact({
+  } as IContact,
+  {
     lang: 'en',
     title: 'Contact',
-    description: 'Do you have a project in mind? Let\'s talk!',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     info: {
       address: {
         title: 'Location',
-        description: 'Guatemala',
+        description: 'Fictional City, Imaginary Country',
       },
       phone: {
         title: 'Phone',
-        description: '+502 1234 5678',
+        description: '+00 1234 5678',
       },
       email: {
         title: 'Email',
-        description: 'contacto@gmail.site',
+        description: 'fake@email.com',
       },
     },
     form: {
@@ -55,10 +52,22 @@ export const seedContact = async () => {
       message: 'Message',
       button: 'Send message',
     },
-  });
+  } as IContact
+];
 
-  await contactES.save();
-  await contactEN.save();
 
-  console.log('Contact seeder executed');
+export const seedContact = async () => {
+  try {
+    await Contact.deleteMany({});
+    const count = await Contact.countDocuments({});
+
+    if (count > 0) {
+      console.log('Contact data already exists, skipping seeding.');
+      return;
+    }
+    await Contact.insertMany(contactData);
+    console.log('Contact data seeded successfully');
+  } catch (error) {
+    console.error('Error seeding Contact data:', error);
+  }
 };

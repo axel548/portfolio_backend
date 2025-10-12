@@ -1,33 +1,36 @@
 import Technology, { ITechnology } from '../models/technology.model';
 
+const technologiesData: ITechnology[] = [
+    {
+        name: 'HTML5',
+        icon: 'html5.svg'
+    } as ITechnology,
+    {
+        name: 'CSS3',
+        icon: 'css3.svg'
+    } as ITechnology,
+    {
+        name: 'Sass',
+        icon: 'sass.svg'
+    } as ITechnology,
+    {
+        name: 'TypeScript',
+        icon: 'typescript.svg'
+    } as ITechnology
+];
+
 export const seedTechnologies = async () => {
     try {
-        const count = await Technology.countDocuments();
-        if (count === 0) {
-            const technologies: ITechnology[] = [
-                {
-                    name: 'JavaScript',
-                    icon: 'javascript.svg'
-                } as ITechnology,
-                {
-                    name: 'React',
-                    icon: 'react.svg'
-                } as ITechnology,
-                {
-                    name: 'Node.js',
-                    icon: 'nodejs.svg'
-                } as ITechnology,
-                {
-                    name: 'MongoDB',
-                    icon: 'mongodb.svg'
-                } as ITechnology
-            ];
-            await Technology.insertMany(technologies);
-            console.log('Technologies seeded');
+        await Technology.deleteMany({});
+        const count = await Technology.countDocuments({});
+
+        if (count > 0) {
+            console.log('Technology data already exists, skipping seeding.');
+            return;
         }
-    } catch (err) {
-        if (err instanceof Error) {
-            console.error(err.message);
-        }
+        await Technology.insertMany(technologiesData);
+        console.log('Technology data seeded successfully');
+    } catch (error) {
+        console.error('Error seeding Technology data:', error);
     }
 };

@@ -1,6 +1,7 @@
 import { Schema, model, Document } from 'mongoose';
 
 export interface IProject extends Document {
+    lang: string;
     title: string;
     description: string;
     image: string;
@@ -9,6 +10,7 @@ export interface IProject extends Document {
 }
 
 const ProjectSchema = new Schema({
+  lang: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   image: { type: String, required: true },
