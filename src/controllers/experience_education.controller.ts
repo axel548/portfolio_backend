@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ExperienceEducation } from '../models/experience_education.model';
+import ExperienceEducation from '../models/experience_education.model';
 
 export const getExperienceEducation = async (req: Request, res: Response) => {
   const lang = req.query.lang || 'es';
