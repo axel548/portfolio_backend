@@ -17,6 +17,7 @@ import experienceEducationRoutes from './routes/experience_education.routes';
 import testimonialRoutes from './routes/testimonial.routes';
 import pricingRoutes from './routes/pricing.routes';
 import skillRoutes from './routes/skill.routes';
+import certificationRoutes from './routes/certification.routes';
 
 // Connect to Database
 const startServer = async () => {
@@ -47,6 +48,7 @@ app.use('/api/experience-education', experienceEducationRoutes);
 app.use('/api/testimonials', testimonialRoutes);
 app.use('/api/pricing', pricingRoutes);
 app.use('/api/skils', skillRoutes);
+app.use('/api/certifications', certificationRoutes);
 
 
 const PORT: string | number = process.env.PORT || 4000;

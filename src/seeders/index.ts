@@ -14,6 +14,7 @@ import { seedLetsTalk } from './lets-talk.seeder';
 import { seedPricing } from './pricing.seeder';
 import { seedSkills } from './skill.seeder';
 import { seedContact } from './contact.seeder';
+import { seedCertifications } from './certification.seeder';
 
 const seedAll = async () => {
   try {
@@ -32,6 +33,7 @@ const seedAll = async () => {
     await seedPricing();
     await seedContact();
     await seedSkills();
+    await seedCertifications();
     await disconnect();
     console.log('All data seeded successfully');
   } catch (error) {
