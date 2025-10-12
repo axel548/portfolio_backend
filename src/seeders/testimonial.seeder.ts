@@ -1,4 +1,4 @@
-import { Testimonial } from '../models/testimonial.model';
+import Testimonial from '../models/testimonial.model';
 
 const testimonialData = {
   es: {
