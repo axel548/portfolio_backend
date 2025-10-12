@@ -1,32 +1,35 @@
 
 import puppeteer from 'puppeteer';
 import { getCvTemplate } from '../templates/cv.template';
-import Project, { IProject } from '../models/project.model';
-import Service, { IService } from '../models/service.model';
-import Technology, { ITechnology } from '../models/technology.model';
-import Translation, { ILanguage } from '../models/language.model';
+import ExperienceEducation from '../models/experience_education.model';
+import PersonalInfo from '../models/personal-info.model';
+import Skill from '../models/skill.model';
+import Certification from '../models/certification.model';
+import Contact from '../models/contact.model';
 import fs from "fs";
 
 
 export const generateCv = async (lang: string) => {
   try {
-    const translation = await Translation.findOne({ code: lang }) as ILanguage;
-
-    if (!translation) {
-      throw new Error('Language not found');
-    }
 
     console.log('Fetching data...');
-    const projects = await Project.find();
-    const services = await Service.find();
-    const technologies = await Technology.find();
-    console.log('Data fetched successfully: ', { projects, services, technologies });
+    
+    const personal_info = await PersonalInfo.findOne({ lang });
+    const experience_education = await ExperienceEducation.findOne({ lang });
+    const skills = await Skill.findOne({ lang });
+    const certifications = await Certification.findOne({ lang });
+    const contact = await Contact.findOne({ lang });
 
-    const html = getCvTemplate(translation, projects, services, technologies);
-    // fs.writeFileSync("debug.html", html);
-    // console.log("HTML dumped to debug.html");
-    // console.log('HTML generated: ', { html });
+    console.log('Data fetched successfully: ', { personal_info, experience_education, skills, certifications });
+    
+    if (!personal_info || !experience_education || !skills || !certifications || !contact) {
+      throw new Error('Missing data to generate CV');
+    }
 
+    const html = getCvTemplate(personal_info, experience_education, skills, certifications, contact);
+    // // fs.writeFileSync("debug.html", html); 
+    // // console.log("HTML dumped to debug.html");
+    // // console.log('HTML generated: ', { html });
 
     console.log('Launching puppeteer...');
     // const browser = await puppeteer.launch({ args: ['--no-sandbox'] });

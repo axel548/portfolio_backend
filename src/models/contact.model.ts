@@ -17,6 +17,10 @@ export interface IContact {
       title: string;
       description: string;
     };
+    linkedin: {
+      title: string;
+      description: string;
+    };
   };
   form: {
     name: string;
@@ -41,6 +45,10 @@ const contactSchema = new Schema({
       description: { type: String, required: true },
     },
     email: {
+      title: { type: String, required: true },
+      description: { type: String, required: true },
+    },
+    linkedin: {
       title: { type: String, required: true },
       description: { type: String, required: true },
     },

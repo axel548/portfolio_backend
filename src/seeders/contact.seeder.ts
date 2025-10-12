@@ -18,6 +18,10 @@ const contactData: IContact[] = [
         title: 'Correo electrónico',
         description: 'correo@ficticio.com',
       },
+      linkedin: {
+        title: 'LinkedIn',
+        description: '@ficticio',
+      },
     },
     form: {
       name: 'Nombre',
@@ -43,6 +47,10 @@ const contactData: IContact[] = [
       email: {
         title: 'Email',
         description: 'fake@email.com',
+      },
+      linkedin: {
+        title: 'LinkedIn',
+        description: '@ficticio',
       },
     },
     form: {
