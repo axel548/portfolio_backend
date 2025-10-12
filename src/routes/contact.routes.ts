@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { handleContactRequest } from '../controllers/contact.controller';
+import { getContact } from '../controllers/contact.controller';
 
 const router = Router();
 
-router.post('/', handleContactRequest);
+router.get('/', getContact);
 
 export default router;

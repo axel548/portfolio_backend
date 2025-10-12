@@ -1,9 +1,18 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
+import Contact from '../models/contact.model';
 
-export const handleContactRequest = (req: Request, res: Response) => {
-  const { name, email, message } = req.body;
-  console.log("Contact request received:", { name, email, message });
+export const getContact = async (req: Request, res: Response) => {
+  const lang = req.query.lang || 'es';
 
-  // Aquí pondrías la lógica real para enviar email (Nodemailer, SendGrid, etc.)
-  res.json({ msg: "Message received. Thank you for contacting me!" });
+  try {
+    const contact = await Contact.findOne({ lang });
+
+    if (!contact) {
+      return res.status(404).json({ message: 'Contact not found' });
+    }
+
+    res.json(contact);
+  } catch (error) {
+    res.status(500).json({ message: 'Error getting contact' });
+  }
 };
