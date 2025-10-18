@@ -1,13 +1,26 @@
-import Language, { ILanguage } from '../models/language.model';
+import Language, { ILanguages } from '../models/language.model';
 
-const languagesData: ILanguage[] = [
-    { name: 'Spanish', code: 'es' } as ILanguage,
-    { name: 'English', code: 'en' } as ILanguage
-];
+const languagesData: ILanguages[] = [
+    {
+      lang: 'es',
+      languages: [
+        { name: 'Español', code: 'es' },
+        { name: 'Inglés', code: 'en' },
+      ],
+    } as ILanguages,
+    {
+      lang: 'en',
+      languages: [
+        { name: 'Spanish', code: 'es' },
+        { name: 'English', code: 'en' },
+      ],
+    } as ILanguages,
+  ];
 
 export const seedLanguages = async () => {
     try {
         await Language.deleteMany({});
+        await Language.collection.dropIndexes();
         const count = await Language.countDocuments({});
 
         if (count > 0) {

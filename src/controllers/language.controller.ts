@@ -3,7 +3,8 @@ import Language from '../models/language.model';
 
 export const getLanguages = async (req: Request, res: Response) => {
     try {
-        const languages = await Language.find();
+        const lang = req.query.lang || 'es';
+        const languages = await Language.findOne({ lang});
         res.json(languages);
     } catch (err) {
         if (err instanceof Error) {
