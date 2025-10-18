@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getGeneral } from '../controllers/general.controller';
+import { getGeneral, updateGeneral } from '../controllers/general.controller';
 
 const router = Router();
 
 router.get('/', getGeneral);
+router.put('/', updateGeneral);
 
 export default router;
