@@ -13,3 +13,28 @@ export const getTestimonials = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Server error', error });
   }
 };
+
+export const updateTestimonial = async (req: Request, res: Response) => {
+    const { lang, title, description, testimonials } = req.body;
+
+    try {
+        let testimonial = await Testimonial.findOne({ lang });
+
+        if (!testimonial) {
+            return res.status(404).json({ msg: 'Testimonial data not found for the specified language' });
+        }
+
+        testimonial.title = title || testimonial.title;
+        testimonial.description = description || testimonial.description;
+        testimonial.testimonials = testimonials || testimonial.testimonials;
+
+        await testimonial.save();
+
+        res.json(testimonial);
+    } catch (err) {
+        if (err instanceof Error) {
+            console.error(err.message);
+        }
+        res.status(500).send('Server Error');
+    }
+};

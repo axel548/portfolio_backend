@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getTestimonials } from '../controllers/testimonial.controller';
+import { getTestimonials, updateTestimonial } from '../controllers/testimonial.controller';
 
 const router = Router();
 
 router.get('/', getTestimonials);
+router.put('/', updateTestimonial);
 
 export default router;
