@@ -13,22 +13,28 @@ const personalInfoData: IPersonalInfo[] = [
         summary: {
             greeting: '¡Hola!',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            available_to_freelance: true,
+            available_to_freelance: {
+                status: true,
+                label: 'Disponible para freelance',
+            },
             cv_button: {
                 label: 'Descargar CV',
                 url: 'https://example.com/cv.pdf',
             },
         },
-        companies: [
-            {
-                image: '/images/fake-company1.png',
-                description: 'Empresa Ficticia 1',
-            },
-            {
-                image: '/images/fake-company2.png',
-                description: 'Empresa Ficticia 2',
-            },
-        ],
+        company: {
+            title: 'Empresas Anteriores',
+            companies: [
+                {
+                    image: '/images/fake-company1.png',
+                    description: 'Empresa Ficticia 1',
+                },
+                {
+                    image: '/images/fake-company2.png',
+                    description: 'Empresa Ficticia 2',
+                },
+            ]
+        },
     } as IPersonalInfo,
     {
         lang: 'en',
@@ -42,22 +48,28 @@ const personalInfoData: IPersonalInfo[] = [
         summary: {
             greeting: 'Hi!',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            available_to_freelance: true,
+            available_to_freelance: {
+                status: true,
+                label: 'Available for Freelancing',
+            },
             cv_button: {
                 label: 'Download CV',
                 url: 'https://example.com/cv.pdf',
             },
         },
-        companies: [
-            {
-                image: '/images/fake-company1.png',
-                description: 'Fictional Company 1',
-            },
-            {
-                image: '/images/fake-company2.png',
-                description: 'Fictional Company 2',
-            },
-        ],
+        company: {
+            title: 'Previous Companies',
+            companies: [
+                {
+                    image: '/images/fake-company1.png',
+                    description: 'Fictional Company 1',
+                },
+                {
+                    image: '/images/fake-company2.png',
+                    description: 'Fictional Company 2',
+                },
+            ]
+        }
     } as IPersonalInfo
 ];
 
