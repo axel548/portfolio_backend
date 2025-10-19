@@ -13,3 +13,29 @@ export const getWorks = async (req: Request, res: Response) => {
       res.status(500).json({ message: error.message });
     }
   };
+
+export const updateWork = async (req: Request, res: Response) => {
+    const { lang, title, description, categories, projects } = req.body;
+
+    try {
+        let work = await Work.findOne({ lang });
+
+        if (!work) {
+            return res.status(404).json({ msg: 'Work data not found for the specified language' });
+        }
+
+        work.title = title || work.title;
+        work.description = description || work.description;
+        work.categories = categories || work.categories;
+        work.projects = projects || work.projects;
+
+        await work.save();
+
+        res.json(work);
+    } catch (err) {
+        if (err instanceof Error) {
+            console.error(err.message);
+        }
+        res.status(500).send('Server Error');
+    }
+};
