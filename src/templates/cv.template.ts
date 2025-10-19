@@ -132,7 +132,7 @@ export const getCvTemplate = (
     </div>
     <div class="section education">
         <h2>${education_title}</h2>
-        ${experience_education.education.map(edu => `
+        ${experience_education.education.education.map(edu => `
         <div class="education">
                 <span class="date">${edu.end_date}</span>
                 <div class="degree">${edu.title}</div>
@@ -151,7 +151,7 @@ export const getCvTemplate = (
     </div>
     <div class="section experience">
         <h2>${work_title}</h2>
-        ${experience_education.experience.map(exp => `
+        ${experience_education.experience.experience.map(exp => `
         <div class="job">
             <span class="date">${exp.start_date} – ${exp.end_date}</span>
             <div class="job-title">${exp.title}</div>

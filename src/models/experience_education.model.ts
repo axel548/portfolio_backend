@@ -21,33 +21,45 @@ export interface IEducation {
 
 export interface IExperienceEducation extends Document {
   lang: string;
-  experience: IExperience[];
-  education: IEducation[];
+  experience: {
+    title: string;
+    experience: IExperience[]
+  };
+  education: {
+    title: string;
+    education: IEducation[]
+  };
 }
 
 const ExperienceEducationSchema = new Schema({
   lang: { type: String, required: true },
-  experience: [
-    {
-      start_date: { type: String, required: true },
-      end_date: { type: String, required: true },
-      title: { type: String, required: true },
-      description: { type: String, required: true },
-      company: { type: String, required: true },
-      details: { type: [String], required: true },
-      technologies: { type: [String], required: true },
-    },
-  ],
-  education: [
-    {
-      start_date: { type: String, required: true },
-      end_date: { type: String, required: true },
-      title: { type: String, required: true },
-      description: { type: String, required: true },
-      institution: { type: String, required: true },
-      details: { type: [String], required: false },
-    },
-  ],
+  experience: {
+    title: { type: String, required: true },
+    experience: [
+      {
+        start_date: { type: String, required: true },
+        end_date: { type: String, required: true },
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        company: { type: String, required: true },
+        details: { type: [String], required: true },
+        technologies: { type: [String], required: true },
+      },
+    ],
+  },
+  education: {
+    title: { type: String, required: true },
+    education: [
+      {
+        start_date: { type: String, required: true },
+        end_date: { type: String, required: true },
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        institution: { type: String, required: true },
+        details: { type: [String], required: false },
+      },
+    ],
+  }
 });
 
 export default model<IExperienceEducation>('ExperienceEducation', ExperienceEducationSchema);

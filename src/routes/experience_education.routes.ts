@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getExperienceEducation } from '../controllers/experience_education.controller';
+import { getExperienceEducation, updateExperienceEducation } from '../controllers/experience_education.controller';
 
 const router = Router();
 
 router.get('/', getExperienceEducation);
+router.put('/', updateExperienceEducation);
 
 export default router;
