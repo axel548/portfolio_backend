@@ -8,18 +8,22 @@ export interface IContact {
     address: {
       title: string;
       description: string;
+      status: boolean;
     };
     phone: {
       title: string;
       description: string;
+      status: boolean;
     };
     email: {
       title: string;
       description: string;
+      status: boolean;
     };
     linkedin: {
       title: string;
       description: string;
+      status: boolean;
     };
   };
   form: {
@@ -39,18 +43,22 @@ const contactSchema = new Schema({
     address: {
       title: { type: String, required: true },
       description: { type: String, required: true },
+      status: { type: Boolean, default: true },
     },
     phone: {
       title: { type: String, required: true },
       description: { type: String, required: true },
+      status: { type: Boolean, default: true },
     },
     email: {
       title: { type: String, required: true },
       description: { type: String, required: true },
+      status: { type: Boolean, default: true },
     },
     linkedin: {
       title: { type: String, required: true },
       description: { type: String, required: true },
+      status: { type: Boolean, default: true },
     },
   },
   form: {
