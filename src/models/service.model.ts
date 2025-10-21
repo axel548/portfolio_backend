@@ -4,6 +4,7 @@ export interface IServiceItem {
     title: string;
     description: string;
     icon: string;
+    price: string;
 }
 
 export interface IService extends Document {
@@ -17,6 +18,7 @@ const ServiceItemSchema = new Schema<IServiceItem>({
     title: { type: String, required: true },
     description: { type: String, required: true },
     icon: { type: String, required: true },
+    price: { type: String, required: true },
 });
 
 const ServiceSchema = new Schema<IService>({

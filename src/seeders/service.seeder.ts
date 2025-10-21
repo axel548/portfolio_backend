@@ -9,17 +9,20 @@ const servicesData: IService[] = [
             {
                 title: 'Desarrollo Web',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                icon: 'code'
+                icon: 'code',
+                price: '0',
             },
             {
                 title: 'Diseño Gráfico',
                 description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                icon: 'pen'
+                icon: 'pen',
+                price: '0',
             },
             {
                 title: 'Marketing Digital',
                 description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                icon: 'chart-bar'
+                icon: 'chart-bar',
+                price: '0',
             }
         ]
     } as IService,
@@ -31,17 +34,20 @@ const servicesData: IService[] = [
             {
                 title: 'Web Development',
                 description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                icon: 'code'
+                icon: 'code',
+                price: '0',
             },
             {
                 title: 'Graphic Design',
                 description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                icon: 'pen'
+                icon: 'pen',
+                price: '0',
             },
             {
                 title: 'Digital Marketing',
                 description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                icon: 'chart-bar'
+                icon: 'chart-bar',
+                price: '0',
             }
         ]
     } as IService
