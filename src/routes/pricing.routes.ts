@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { getPricing } from '../controllers/pricing.controller';
+import { getPricing, updatePricing } from '../controllers/pricing.controller';
 
 const router = Router();
 
 router.get('/', getPricing);
+router.put('/', updatePricing);
 
 export default router;
