@@ -146,7 +146,7 @@ export const getCvTemplate = (
     </div>
     <div class="section skills">
         <h2>${skills_title}</h2>
-        <p class="text_skills"><strong>${technologies_title}</strong> ${skills.skills.filter(tech => tech.category == 'language' || tech.category == 'framework'  || tech.category == 'tool').map(tech => tech.skill).join(', ')}</p>
+        <p class="text_skills"><strong>${technologies_title}</strong> ${skills.skills.filter(tech => tech.category == 'language' || tech.category == 'framework'  || tech.category == 'containerization' || tech.category == 'infrastructure_as_code' || tech.category == 'ci_cd' || tech.category == 'cloud').map(tech => tech.skill).join(', ')}</p>
         <p class="text_skills"><strong>${soft_skills_title}:</strong> ${skills.skills.filter(tech => tech.category == 'soft_skill').map(tech => tech.skill).join(', ')}</p>
     </div>
     <div class="section experience">

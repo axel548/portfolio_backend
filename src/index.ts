@@ -33,7 +33,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.use('/api/projects', projectRoutes);
+// app.use('/api/projects', projectRoutes);
 app.use('/api/services', serviceRoutes);
 app.use('/api/technologies', technologyRoutes);
 app.use('/api/contact', contactRoutes);

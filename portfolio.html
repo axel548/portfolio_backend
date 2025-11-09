@@ -1,0 +1,10 @@
+        
+        <div class="section projects">
+            <h2>PROYECTOS</h2>
+            ${works.map(work => work.projects.map(project => `
+            <div class="project">
+                <div class="project-title">${project.title}</div>
+                <p>${project.description}</p>
+            </div>
+            `).join('')).join('')}
+        </div>
